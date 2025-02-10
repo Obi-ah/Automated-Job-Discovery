@@ -1,0 +1,13 @@
+# JetBrains IDEs files
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+/.env
+
+#personal files
+my_*
+
+
