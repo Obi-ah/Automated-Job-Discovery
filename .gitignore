@@ -10,4 +10,8 @@ out/
 #personal files
 my_*
 
+#generated outpus
+*.xlsx
+*.csv
+
 
