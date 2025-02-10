@@ -5,17 +5,15 @@ import pandas as pd
 import time
 import random
 
+from src import config
+
+
 class JobScraper:
-    BASE_URL = "https://www.test.com"
+    BASE_URL = config.BASE_URL
     PATH = "/jobs/search?q={query}&w={location}&f={days_since_posted}&page={page}"
     SEARCH_URL = BASE_URL + PATH
     print("search URL: ", SEARCH_URL)
-    USER_AGENTS = [
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
-    ]
+    USER_AGENTS = config.USER_AGENTS
 
     def __init__(self, query, location, days_since_posted=3, max_pages=3):
         self.query = query
@@ -110,6 +108,6 @@ class JobScraper:
 
 
 if __name__ == "__main__":
-    scraper = JobScraper(query="test", location="test_location", days_since_posted=2)
+    scraper = JobScraper(query=config.JOB_TITLE, location=config.JOB_LOCATION, days_since_posted=config.JOB_DAYS_SINCE_POSTED)
     jobs = scraper.scrape()
     scraper.save_to_excel()
