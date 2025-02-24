@@ -97,7 +97,7 @@ class JobScraper:
                 self.jobs.append(job_data)
 
             print(f"Scraped page {page} successfully.")
-            time.sleep(random.uniform(3, 7))  # Randomized sleep to mimic human behavior
+            time.sleep(random.uniform(3, 7))  # Randomized sleep
 
         return self.jobs
 
